@@ -1,13 +1,13 @@
-ARG GOVERSION
+ARG GOVERSION=1.12
 FROM golang:${GOVERSION} AS build
 
 COPY . /build/go/src/github.com/giantswarm/prometheus-pingdom-exporter
 WORKDIR /build/go/src/github.com/giantswarm/prometheus-pingdom-exporter
 
-ARG VERSION
+ARG VERSION=0.1.1
 ARG COMMIT
-ARG GOOS
-ARG GOARCH
+ARG GOOS=linux
+ARG GOARCH=amd64
 ENV GOPATH=/build/go
 
 RUN go get && go build -a \
